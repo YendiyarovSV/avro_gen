@@ -20,7 +20,7 @@ else:
 
 setup(
     name='avro-gen-topkrabbensteam',
-    version='0.0.1',
+    version='0.0.2',
 
     description='Avro record class and specific record reader generator',
     long_description=long_description,

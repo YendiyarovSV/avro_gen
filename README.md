@@ -5,6 +5,9 @@ AVRO-GEN-TOPKRABBENSTEAM
 Based on the original github project https://github.com/rbystrit/avro_gen, this one was forked in order to fix a problem related to load this library in a docker container. Problem was solved by rewriting tiny bit of a code, which generates "schema.avsc" file.
 Loading this file in a docker container was a problem, so we decided to store "schema.avsc" file internally inside schema_classes.py file as a string.
 The same approach is used by avrogen library developed for .Net Core AvroGen.
+
+##### Installation:
+		pip install avro-gen-topkrabbensteam
  
 ##### Usage:
 		import json
