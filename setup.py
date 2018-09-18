@@ -2,7 +2,7 @@
 A setuptools-based setup module.
 
 See:
-https://github.com/rbystrit/avro_gen
+https://github.com/YendiyarovSV/avro_gen
 """
 
 from setuptools import setup, find_packages
@@ -19,14 +19,14 @@ else:
     long_description = ''
 
 setup(
-    name='avro-gen',
-    version='0.3.0',
+    name='avro-gen-topkrabbensteam',
+    version='0.0.1',
 
     description='Avro record class and specific record reader generator',
     long_description=long_description,
-    url='https://github.com/rbystrit/avro_gen',
-    author='Roman Bystritskiy',
-    author_email='rbystrit@gmail.com',
+    url='https://github.com/YendiyarovSV/avro_gen',
+    author='Sergei Yendiyarov (original author rbystrit/avro_gen)',
+    author_email='s.endiyarov@gmail.com',
     license='License :: OSI Approved :: Apache Software License',
 
     classifiers=[

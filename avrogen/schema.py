@@ -50,7 +50,7 @@ def generate_schema(schema_json, use_logical_types=False, custom_imports=None, a
     main_out = StringIO()
     writer = TabbedWriter(main_out)
 
-    write_preamble(writer, use_logical_types, custom_imports)
+    write_preamble(writer, use_logical_types, custom_imports,schema_json)
     write_schema_preamble(writer)
     write_get_schema(writer)
     write_populate_schemas(writer)
@@ -99,12 +99,12 @@ def write_schema_preamble(writer):
     :return:
     """
     write_read_file(writer)
-    writer.write('\n\ndef __get_names_and_schema(file_name):')
+    writer.write('\n\ndef __get_names_and_schema():')
     with writer.indent():
         writer.write('\nnames = avro_schema.Names()')
-        writer.write('\nschema = make_avsc_object(json.loads(__read_file(file_name)), names)')
+        writer.write('\nschema = make_avsc_object(json.loads(_STRING_SCHEMA_JSON), names)')
         writer.write('\nreturn names, schema')
-    writer.write('\n\n__NAMES, SCHEMA = __get_names_and_schema(os.path.join(os.path.dirname(__file__), "schema.avsc"))')
+    writer.write('\n\n__NAMES, SCHEMA = __get_names_and_schema()')
 
 
 def write_populate_schemas(writer):
@@ -166,10 +166,7 @@ def write_schema_files(schema_json, output_folder, use_logical_types=False, cust
         os.mkdir(output_folder)
 
     with open(os.path.join(output_folder, "schema_classes.py"), "w+") as f:
-        f.write(schema_py)
-
-    with open(os.path.join(output_folder, "schema.avsc"), "w+") as f:
-        f.write(schema_json)
+        f.write(schema_py)    
 
     ns_dict = generate_namespace_modules(names, output_folder)
 

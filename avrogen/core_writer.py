@@ -1,6 +1,7 @@
 import os
 
 from avro import schema
+import json
 from . import namespace as ns_
 from . import logical
 import six
@@ -249,7 +250,7 @@ def start_namespace(current, target, writer):
         writer.write('\n')
 
 
-def write_preamble(writer, use_logical_types, custom_imports):
+def write_preamble(writer, use_logical_types, custom_imports, schema_json):
     """
     Writes a preamble of the file containing schema classes
     :param  writer:
@@ -277,6 +278,8 @@ def write_preamble(writer, use_logical_types, custom_imports):
     writer.write('    from avro.schema import make_avsc_object\n')
     writer.untab()
     writer.write('\n')
+    writer.write('_STRING_SCHEMA_JSON = %s\n' % json.dumps(schema_json))
+    writer.write('\n')    
 
 
 def write_read_file(writer):
